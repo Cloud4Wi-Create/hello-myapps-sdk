@@ -3,5 +3,5 @@
   "description": "Testing myapps-sdk.js feature",
   "repository": "https://github.com/fmanna-c4w/hello-myapps-sdk",
   "logo": "https://node-js-sample.herokuapp.com/node.png",
-  "keywords": ["html", "javascript", "static"],
+  "keywords": ["html", "javascript", "static"]
 }
