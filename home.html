@@ -21,7 +21,7 @@
     <p> <strong>Note</strong>: working only beside Cloud4wi splashportal and contropanel </p>
 
     <div style="margin-top: 30px;">
-    Response from request to: <code id="req-url"></code>
+    Session:
     </div>
     <div id="dec">
 
@@ -39,15 +39,12 @@
     var url = "https://volare.cloud4wi.com/controlpanel/1.0/bridge/sessions/" +sk;
     $("#req-url").append(url);
 
-    $.get( url, function() {
-    })
-      .done(function(data) {
-        $("#dec").append(JSON.stringify(data));
-      })
-      .fail(function(xhr, ajaxOptions, thrownError) {
-        $("#dec").append(xhr.status);
-      });
-
+    var f = function(ss) {
+      let str = JSON.stringify(ss, null, 4); 
+      $("#dec").append(str);
+    }
+    
+    MYAPPS.session(f);
     </script>
   </body>
 </html>
