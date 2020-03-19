@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sample MyApps application</title>
+    <script src="https://splashportal.cloud4wi.com/myapps/v1/myapps-sdk.js"></script>
+  </head>
+  <body>
+    This is a sample MyApps application
+    <div id="app"></div>
+
+    <div><span>Trigger:</span> <span id="trg"></span></div>
+    <div><span>SK:</span> <span id="sk"></span></div>
+
+    <p>The next URL is <script>MYAPPS.getNextUrl();</script></p>
+    <p>You can go Next in the Access Journey using <button onclick="MYAPPS.goNext()">MYAPPS.goNext()</button></p>
+    <p>You can go Home to the Welcom Portal if launched by App Bar using <button onclick="MYAPPS.goHome()">MYAPPS.goHome()</button></p>
+    <p>You can do whichever is contextually relevant using <button onclick="MYAPPS.end()">MYAPPS.end()</button></p>
+    <p> Finally, you can Render a Navbar using <button onclick="MYAPPS.renderNavbar()">MYAPPS.renderNavbar(navbarOptions)</button></p>
+    <p> <strong>Note</strong>: the navigation will not work without the proper query strings added by Access Journey and/or Volare Website </p>
+    <p> <strong>Note</strong>: working only beside Cloud4wi splashportal and contropanel </p>
+
+    <div style="margin-top: 30px;">
+    Response from request to: <code id="req-url"></code>
+    </div>
+    <div id="dec">
+
+
+    </div>
+    
+    <script src="js/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+
+    var sk = MYAPPS.getSk();
+    $("#sk").append(sk);
+    $("#trg").append(MYAPPS.getParam("tgr"));
+
+    var url = "https://volare.cloud4wi.com/controlpanel/1.0/bridge/sessions/" +sk;
+    $("#req-url").append(url);
+
+    $.get( url, function() {
+    })
+      .done(function(data) {
+        $("#dec").append(JSON.stringify(data));
+      })
+      .fail(function(xhr, ajaxOptions, thrownError) {
+        $("#dec").append(xhr.status);
+      });
+
+    </script>
+  </body>
+</html>
